@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=script, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <title>Weather app</title>
-</head>
-<body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="script.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=script, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="style.css">
+        <title>Weather app</title>
+    </head>
+    <body class="indigo lighten-2">
+        <div class="row1">
+            <form class="col s12">
+                <div class="row2">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">search</i>
+                        <input type="text" id="autocomplete-SearchInput" class="autocompleteSearch">
+                        <label for="autocomplete-Searchinput">Enter city</label>
+                    </div>
+                    <button class="btn grey black-text" type="submit" name="action">Serch
+                        <i class="material-icons black-text right">send</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="script.js"></script>
+    </body>
 </html>
