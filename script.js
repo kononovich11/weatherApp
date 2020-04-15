@@ -19,11 +19,26 @@ function getCityName() {
 }
 
 function createElementsOfCard(data) {
+    //console.log(data);
     const card = document.querySelector('.card');
     const cardTitle = document.createElement('h3');
+
     cardTitle.textContent = data.name;
     card.appendChild(cardTitle);
-    console.log(card);
+    const {main, description, icon} = data.weather[0];
+    const needDataObj = {
+        main, 
+        description, 
+        icon,
+    };
+
+    for(let key in needDataObj) {
+        console.log(`${key}: ${needDataObj[key]}`);
+        const rowWeather = document.createElement('p');
+        rowWeather.textContent = `${key}: ${needDataObj[key]}`;
+        card.appendChild(rowWeather);
+    }
+
 }
 
  async function getDataFromApi(city) {
