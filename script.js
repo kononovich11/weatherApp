@@ -17,43 +17,46 @@ function getCityName() {
     const inputSearchValue = inputSearch.value;
     return inputSearchValue;
 }
-function getDate() {
-    const currentDateObj = new Date();
-    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    const currentDayMonth = `${days[currentDateObj.getDay()]}, ${currentDateObj.getDay()} ${months[currentDateObj.getMonth()]}`;
-    return currentDayMonth;
-}
 
 function createElementsOfCard(data) { 
     console.log(data);
-    
+    //Elements Card
     const card = document.querySelector('.card');
     const cardTitle = document.createElement('h3');
     const cardDate = document.createElement('h4');
     card.innerHTML ='';
 
-    cardTitle.textContent = data.name;
-    cardDate.textContent = getDate();
+    cardTitle.textContent = data.city.name;
+
+    //Date
+    const currentDateObj = new Date();
+    const fullNumberDate = data.list[0].dt_txt.slice(0,10); 
+    
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    
+    const currentFullDate = `${days[currentDateObj.getDay()]}, ${fullNumberDate}`;
+    cardDate.textContent = currentFullDate;
 
     card.appendChild(cardTitle);
     card.appendChild(cardDate);
-    
-    const {main, description, icon} = data.weather[0];
-    const {temp, feels_like, pressure, humidity} = data.main;
-    const {speed} = data.wind;
-    const {all} = data.clouds;
+   
+    const currentDayInfoObj = data.list[0];
+
+    const {temp, feels_like, pressure, sea_level, humidity} = data.list[0].main;
+    const {main, description, icon} = data.list[0].weather[0];
+    const {speed} = data.list[0].wind;
     const iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`
+
     const needDataObj = {
-        main,
-        description,
-        iconUrl, 
-        temp,
-        feels_like,
-        pressure,
+        iconUrl,
+        temp, 
+        feels_like, 
+        pressure, 
+        sea_level, 
         humidity,
-        speed, 
-        all
+        main, 
+        description,
+        speed,
     };
 
     for (let key in needDataObj) {
@@ -67,11 +70,14 @@ function createElementsOfCard(data) {
             card.appendChild(rowWeather);
         }
     }
+   /* data.list.map(objWeather => {
+        console.log(objWeather.dt_txt);
+    });*/
    
 }
 
 async function getDataFromApi(city) {
-    let data = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=8404e484fd35ab1089ddcd4ce507e732`).then(response => {
+    let data = await fetch(`http://api.openweathermap.org/data/2.5//forecast?q=${city}&APPID=8404e484fd35ab1089ddcd4ce507e732`).then(response => {
         return response.json();
     }).then(dataObj => {
         return dataObj;
@@ -85,5 +91,4 @@ async function getDataFromApi(city) {
 
 function getObjAllData(data) {
     createElementsOfCard(data)
-
 }
