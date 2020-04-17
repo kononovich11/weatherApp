@@ -91,7 +91,7 @@ function createElementsOfCard(data, fullNumberDate) {
                 description,
                 speed,
             };
-            console.log(temp);
+
             for (let key in needDataObj) {
                 if (key == 'iconUrl') {
                     const img = document.createElement('img');
@@ -137,7 +137,6 @@ function generateSmallCards(data, fullNumberDate, changedArr) {
 
         if(fullNumberDate != weatherObjHour.dt_txt.slice(0,10) && weatherObjHour.dt_txt.slice(11,13) == '12'){
             
-            console.log(weatherObjHour,weatherObjHour.weather[0].icon, changedArr[countIndex]);
             const iconUrlImg = `https://openweathermap.org/img/wn/${weatherObjHour.weather[0].icon}@2x.png`
 
             const smallCard = document.createElement('div');
