@@ -79,7 +79,7 @@ function createElementsOfCard(data, fullNumberDate) {
             const {temp, humidity} = data.list[i].main;
             const {main, description, icon} = data.list[i].weather[0];
             const {speed} = data.list[i].wind;
-            const iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`
+            const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`
             
             const temperature = Math.round(temp - 273.15);
             const needDataObj = {
@@ -109,7 +109,7 @@ function createElementsOfCard(data, fullNumberDate) {
 }
 
 async function getDataFromApi(city) {
-    let data = await fetch(`http://api.openweathermap.org/data/2.5//forecast?q=${city}&APPID=8404e484fd35ab1089ddcd4ce507e732`).then(response => {
+    let data = await fetch(`https://api.openweathermap.org/data/2.5//forecast?q=${city}&APPID=8404e484fd35ab1089ddcd4ce507e732`).then(response => {
         return response.json();
     }).then(dataObj => {
         return dataObj;
@@ -138,7 +138,7 @@ function generateSmallCards(data, fullNumberDate, changedArr) {
         if(fullNumberDate != weatherObjHour.dt_txt.slice(0,10) && weatherObjHour.dt_txt.slice(11,13) == '12'){
             
             console.log(weatherObjHour,weatherObjHour.weather[0].icon, changedArr[countIndex]);
-            const iconUrlImg = `http://openweathermap.org/img/wn/${weatherObjHour.weather[0].icon}@2x.png`
+            const iconUrlImg = `https://openweathermap.org/img/wn/${weatherObjHour.weather[0].icon}@2x.png`
 
             const smallCard = document.createElement('div');
             smallCard.classList.add('smallCard');
