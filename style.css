@@ -1,43 +1,56 @@
-body {
-    border: 3px solid black;
-}
-
 .container {
-    border: 3px solid blue;
-}
-
-.row1 {
-    border: 3px solid yellow;
-}
-
-form {
-    border: 3px solid green;
-   
+    margin-top: 1%;
+    font-size: 150%;
 }
 
 .row2 {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    border: 3px solid red;
 }
 
 .input-field {
-    border: 3px solid pink;
     width: 50%;
 }
 
-.autocompleteSearch {
-    border: 3px solid mediumaquamarine
-}
-
-.row3 {
-    border: 3px solid purple;
-}
-
-.col-card {
-    border: 3px solid lightblue;
-}
 .card {
-    border: 3px solid red;
+    display: flex;
+    justify-content: space-evenly;
+    color: #fff;
+}
+
+.cardWeatherTime {
+    margin-left: 2%;
+}
+
+.containerForSmallCards {
+    display: flex;
+}
+
+.smallCard {
+    width: 25%;
+    text-align: center;
+    border: 2px solid green;
+}
+
+@media screen and (max-width: 425px) {
+     .card, .containerForSmallCards {
+        flex-direction: column;
+    }
+    .smallCard {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .container {
+        width: 100%;
+    }
 }
